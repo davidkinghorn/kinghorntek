@@ -1,0 +1,5 @@
+#!/bin/bash
+/etc/init.d/tomcat7 stop
+rm -r /var/lib/tomcat7/webapps/ROOT/
+cp target/kinghorntek-1.0.0.war /var/lib/tomcat7/webapps/ROOT.war
+/etc/init.d/tomcat7 start
