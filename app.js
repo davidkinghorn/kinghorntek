@@ -30,7 +30,7 @@ app.use(bodyParser.urlencoded({
 }))
 
 setupPassport(app)
-
+    dubugger;
 app.use('/', appRouter)
 
 // start app
