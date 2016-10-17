@@ -21,7 +21,7 @@ module.exports = function(express) {
   }))
 
   router.get('/', function(req, res) {
-    res.render('home')
+    res.render('index')
   })
 
   router.get('/dashboard', isAuthenticated, function(req, res) {
@@ -32,6 +32,19 @@ module.exports = function(express) {
     req.logout()
     res.redirect('/')
   })
+
+    router.get ('/home', function(req, res) {
+        res.render('home')
+    })
+
+
+   router.get ('/login', function(req, res) {
+       res.render('login')
+   })
+
+    router.get ('/index', function(req, res) {
+        res.render('index')
+    })
 
   return router
 }
