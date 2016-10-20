@@ -10,10 +10,10 @@ module.exports = function(express) {
     req.flash('error', 'You have to be logged in to access the page.');
     res.redirect("/home")
   };
-var admintools = function (req, res, next) {
+/*var admintools = function (req, res, next) {
     document.getElementById("sign-in").style.display = "none";
 }
-
+*/
   router.get('/signup', signupController.show);
   router.post('/signup', signupController.signup);
 
