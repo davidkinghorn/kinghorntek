@@ -8,9 +8,12 @@ module.exports = function(express) {
     if (req.isAuthenticated())
       return next();
     req.flash('error', 'You have to be logged in to access the page.');
-    res.redirect('/')
+    res.redirect("/home")
   };
-  
+var admintools = function (req, res, next) {
+    document.getElementById("sign-in").style.display = "none";
+}
+
   router.get('/signup', signupController.show);
   router.post('/signup', signupController.signup);
 
@@ -22,13 +25,16 @@ module.exports = function(express) {
 
   router.get('/', function(req, res) {
     res.render('index');
-   // document.getElementById("logout-link").style.display = "none";
   });
 
   router.get('/dashboard', isAuthenticated, function(req, res) {
-    res.render('dashboard', {layout: "base" });
-
-  })
+    if (req.user) {
+       //   res.render('dashboard', {layout: "app" });
+        res.render('dashboard');
+    } else {
+       res.render('home');
+      }
+   })
 
   router.get('/logout', function(req, res) {
     req.logout()
