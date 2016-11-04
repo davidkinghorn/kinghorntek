@@ -18,7 +18,7 @@ module.exports = function(express) {
   router.post('/login', passport.authenticate('local', {
       successRedirect: '/dashboard',
       failureRedirect: '/',
-      failureFlash: true 
+      failureFlash: true
   }));
 
   router.get('/', function(req, res) {
@@ -30,6 +30,7 @@ module.exports = function(express) {
        //   res.render('dashboard', {layout: "app" });
         res.render('dashboard');
     } else {
+   //    req.flash('error', 'Your credentials are incorrect.');
        res.render('home');
       }
    })
