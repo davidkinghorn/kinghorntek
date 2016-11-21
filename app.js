@@ -18,7 +18,7 @@ app.use(cookieParser());
 app.use(session({ secret: '4564f6s4fdsfdfd', resave: false, saveUninitialized: false }))
 
 app.use('/styles', express.static(__dirname + '/styles'));
-
+app.use(express.static(__dirname + '/public'));
 app.use(flash());
 app.use(function(req, res, next) {
     res.locals.errorMessage = req.flash('error');
@@ -28,7 +28,7 @@ app.use(function(req, res, next) {
 app.use(jsonParser);
 app.use(bodyParser.urlencoded({
   extended: true
-}))
+}));
 
 setupPassport(app);
 

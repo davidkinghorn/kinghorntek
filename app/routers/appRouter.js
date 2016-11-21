@@ -1,7 +1,5 @@
 var passport = require('passport'),
-
-    signupController = require('../controllers/signupController.js');
-
+signupController = require('../controllers/signupController.js');
 module.exports = function(express) {
   var router = express.Router();
 
@@ -27,35 +25,45 @@ module.exports = function(express) {
 
   router.get('/dashboard', isAuthenticated, function(req, res) {
     if (req.user) {
-       //   res.render('dashboard', {layout: "app" });
         res.render('dashboard');
     } else {
-   //    req.flash('error', 'Your credentials are incorrect.');
        res.render('home');
       }
-   })
+   });
 
   router.get('/logout', function(req, res) {
-    req.logout()
+    req.logout();
     res.redirect('/')
-  })
+  });
 
     router.get ('/home', function(req, res) {
         res.render('home')
-    })
-
+    });
 
    router.get ('/login', function(req, res) {
        res.render('login')
-   })
+   });
 
     router.get ('/index', function(req, res) {
         res.render('index')
-    })
+    });
 
     router.get ('/userManagement', isAuthenticated, function(req, res) {
         res.render('userManagement', {layout: "admintools"});
-    })
+    });
+
+    router.get ('/myphoto', function(req, res) {
+        res.render('myphoto' , {layout: "carousel"});
+    //    res.render('myphoto', {layout: false})
+    });
+    router.get ('/western', function(req, res) {
+        res.render('western' , {layout: "carousel"});
+        //    res.render('myphoto', {layout: false})
+    });
+    router.get ('/hindu', function(req, res) {
+        res.render('hindu' , {layout: "carousel"});
+        //    res.render('myphoto', {layout: false})
+    });
 
   return router
-}
+};

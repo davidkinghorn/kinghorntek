@@ -40,8 +40,11 @@ module.exports = function(app) {
       }
     }).then(function (user) {
       if (user == null) {
-        done(new Error('Wrong user id.'))
+        return done(null, false, {message: 'Incorrect credentials.'})
       }
+        //     if (user == null) {
+ //       done(new Error('Wrong user id.'))
+  //    }
       
       done(null, user)
     })
